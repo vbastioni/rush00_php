@@ -5,8 +5,8 @@ $logged = true;
 <html>
 <head>
     <title>ft_minishop</title>
-    <link rel="stylesheet" href="/css/style.css">
-    <link rel="stylesheet" href="/css/header.css">
+    <link rel="stylesheet" href="/RUSH00/css/style.css">
+    <link rel="stylesheet" href="/RUSH00/css/header.css">
 </head>
 <body>
     <header>
@@ -56,7 +56,9 @@ else
             </ul>
         </nav>
     </header>
-    <div class="container"></div>
+    <div class="container">
+        <div style="width: 900px; text-align: center; background-color: gray; height: 500px; margin-botton: 30px; margin: 0 auto;"></div>
+    </div>
     <footer>
         &copy; clucas - vbastion 2018
     </footer>
