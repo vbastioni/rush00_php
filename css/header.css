@@ -1,0 +1,121 @@
+header {
+    width: 100%;
+}
+
+nav#left-nav {
+    width: 66%;
+    background-color: #424558;
+    float: left;
+    text-align: left;
+    height: 54px;
+}
+
+nav#center-nav {
+    background-color: #424558;
+    display: inline-block;
+    margin:0 auto;
+    height: 54px;
+}
+
+nav#right-nav {
+    width: 34%;
+    background-color: #424558;
+    float: right;
+    /* text-align: right; */
+    height: 54px;
+}
+
+nav a {
+    display: inline-block;
+    text-decoration: none;
+}
+
+body {
+    font-family: monospace;
+    margin: 0px;
+    padding: 0px;
+}
+
+nav > ul {
+    margin: 0px;
+    padding: 0px;
+}
+
+nav li {
+    list-style-type: none;
+}
+
+/* nav#left-nav > ul > li { */
+nav > ul > li {
+    float: left;
+    position: relative;
+}
+
+.submenu {
+    display: none;
+}
+
+nav li:hover .submenu {
+    display: inline-block;
+    position: absolute;
+    top: 100%;
+    left: 0px;
+    padding: 0px;
+    z-index: 100000;
+}
+
+.submenu li a {
+    padding: 15px 30px;
+    font-size: 13px;
+    color: #222538;
+    width: 270px;
+}
+
+.cat_a:hover {
+    border-top: 5px solid #E44D26;
+    background-color: rgba(228, 77, 38, 0.15);
+}
+
+.cat_a .submenu li:hover {
+    border: 1px solid #E44D26;
+}
+
+.cat_b:hover {
+    border-top: 5px solid #0070BB;
+    background-color: rgba(000, 112, 192, 0.15);
+}
+.cat_b .submenu li:hover {
+    border: 1px solid #0070BB;
+}
+
+.cat_c:hover {
+    border-top: 5px solid #F1DC4F;
+    background-color: rgba(241, 211, 79, 0.15);
+}
+.cat_c .submenu li:hover {
+    border: 1px solid #F1DC4F;
+}
+
+.cat_d:hover {
+    border-top: 5px solid #FF11DD;
+    background-color: rgba(255, 17, 221, 0.15);
+}
+
+.cat_d .submenu li:hover {
+    border: 1px solid #FF11DD;
+}
+
+nav > ul > li:hover a {
+    padding: 15px 30px 20px 30px;
+}
+
+nav > ul::after {
+    content: "";
+    display: block;
+    clear: both;
+}
+
+nav > ul > li > a {
+    padding: 20px 30px;
+    color: #FFF;
+}

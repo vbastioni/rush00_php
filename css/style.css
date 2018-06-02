@@ -1,0 +1,23 @@
+body {
+    margin: 0 auto;
+}
+
+.container {
+    background-color: rgb(250, 241, 241);
+    margin: 0 auto;
+    width: 1200px;
+    height: 100%;
+    padding-top: 54px;
+    padding-bottom: 30px;
+}
+
+footer {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    background-color: #424558;
+    color: white;
+    text-align: right;
+    height: 30px;
+}

@@ -60,7 +60,7 @@ if ($page == "inscription") {
 			$msg = "Veuillez indiquer votre email";
 		} else if (strlen($email) > 100) {
 			$msg = "Votre email est trop long";
-		} else if (!preg_match('#^[\w.-]+@[\w.-]+\.[a-z]{2,10}$#i', $email)) {
+		} else if (!preg_match('#^[\w.-]+@[\w.-]+\.[a-z]{2,3}$#i', $email)) { // A verifier et/ou changer
 			$msg = "Votre email est incorrect";
 		} else if (mysqli_num_rows(mysqli_query($sql, "SELECT email FROM users WHERE email = '".$email."' LIMIT 1")) > 0) {
 			$msg = "Cet email est deja utilise";
