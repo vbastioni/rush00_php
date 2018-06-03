@@ -133,18 +133,18 @@ if ($page == "valider") {
 		}
 	}
 
-// if ($page == "admin") {
-// 	if (!ft_admin()) {
-// 		header("Location: index.php");
-// 		exit;
-// 	}
-// }
+if ($page == "admin") {
+	if (!ft_admin()) {
+		header("Location: index.php");
+		exit;
+	}
+}
 
 if ($page == "admin_users") {
-	// if (!ft_admin()) {
-	// 	header("Location: index.php");
-	// 	exit;
-	// }
+	if (!ft_admin()) {
+		header("Location: index.php");
+		exit;
+	}
 	if (isset($_GET['del_id'])) {
 		$del_id = ceil($_GET['del_id']);
 		mysqli_query($sql, "DELETE FROM users WHERE id = ".$del_id);
@@ -162,10 +162,10 @@ if ($page == "admin_users") {
 }
 
 if ($page == "admin_articles") {
-	// if (!ft_admin()) {
-	// 	header("Location: index.php");
-	// 	exit;
-	// }
+	if (!ft_admin()) {
+		header("Location: index.php");
+		exit;
+	}
 	$id_categorie = ceil(@$_GET['id']);
 	$retour = mysqli_query($sql, "SELECT * FROM categories WHERE id = ".$id_categorie);
 	if (mysqli_num_rows($retour) == 0) {
@@ -195,10 +195,10 @@ if ($page == "admin_articles") {
 }
 
 if ($page == "admin_categories") {
-	// if (!ft_admin()) {
-	// 	header("Location: index.php");
-	// 	exit;
-	// }
+	if (!ft_admin()) {
+		header("Location: index.php");
+		exit;
+	}
 	if (isset($_GET['del_id'])) {
 		$del_id = ceil($_GET['del_id']);
 		$articles = mysqli_query($sql, "SELECT * FROM articles WHERE id_category = ".$del_id);
@@ -247,10 +247,10 @@ if ($page == "admin_categories") {
 }
 
 if ($page == "admin_orders") {
-	// if (!ft_admin()) {
-	// 	header("Location: index.php");
-	// 	exit;
-	// }
+	if (!ft_admin()) {
+		header("Location: index.php");
+		exit;
+	}
 	if (isset($_GET['valid_id'])) {
 		$valid_id = ceil($_GET['valid_id']);
 		mysqli_query($sql, "UPDATE panier SET finished = finished + 1 WHERE id = ".$valid_id);
@@ -263,10 +263,10 @@ if ($page == "admin_orders") {
 }
 
 if ($page == "admin_order") {
-	// if (!ft_admin()) {
-	// 	header("Location: index.php");
-	// 	exit;
-	// }
+	if (!ft_admin()) {
+		header("Location: index.php");
+		exit;
+	}
 	$id_commande = ceil(@$_GET['id']);
 	$retour = mysqli_query($sql, "SELECT * FROM panier WHERE id = ".$id_commande);
 	if (mysqli_num_rows($retour) == 0) {
