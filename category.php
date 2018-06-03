@@ -1,6 +1,7 @@
 <?PHP
 include "header.php";
 $ok = false;
+$all_cat = false;
 if (isset($_GET['id'])) {
 	$id = ceil($_GET['id']);
 	$category = mysqli_query($sql, "SELECT name FROM categories WHERE id = ".$id." LIMIT 1");
@@ -9,23 +10,47 @@ if (isset($_GET['id'])) {
 		$name = $name['name'];
 		$ok = true;
 	}
+} else {
+	$all_cat = true;
 }
+?>
+	<div class="cat-container">
+		<?php if ($name) { ?>
+			<h1><?=$name?></h1>
+		<?php } ?>
+		<div class="card-columns">
+<?PHP
 if ($ok) {
-	echo "<h1>".$name."</h1><br /><table id='articles'>";
-	$articles = mysqli_query($sql, "SELECT * FROM articles WHERE id_category = ".$id." ORDER BY name");
+	$articles = mysqli_query($sql, "SELECT * FROM articles WHERE gamme = ".$id." ORDER BY name");
 	while ($article = mysqli_fetch_array($articles)) {
 		?>
-		<tr>
-			<td><img alt='<?PHP echo $article['name']; ?>' src='<?PHP echo $article['photo']; ?>' title='<?PHP echo $article['name']; ?>' /></td>
-			<td><?PHP echo $article['name']; ?></td>
-			<td><?PHP echo $article['price']; ?>&euro;</td>
-			<td><a href='category.php?id=<?PHP echo $id; ?>&add=<?PHP echo $article['id']; ?>'>Ajouter au panier</a></td>
-		</tr>
+		<div class="card" style="width: 18rem;">
+            <img class="card-img-top" src="<?= $article['photo']?>" alt="<?= $article['name']?>" height=18rem>
+            <div class="card-body">
+                <h5 class="card-title"><?= $article['name'] ?></h5>
+                <p class="card-text"><?= $article['price'] ?>&euro;</p>
+            </div>
+        </div>
 		<?PHP
 	}
-	echo "</table>";
+	$articles = mysqli_query($sql, "SELECT * FROM articles WHERE type = ".$id." ORDER BY name");
+	while ($article = mysqli_fetch_array($articles)) {
+		?>
+		<div class="card" style="width: 18rem;">
+            <img class="card-img-top" src="<?= $article['photo']?>" alt="<?= $article['name']?>" height=18rem>
+            <div class="card-body">
+                <h5 class="card-title"><?= $article['name'] ?></h5>
+                <p class="card-text"><?= $article['price'] ?>&euro;</p>
+            </div>
+        </div>
+		<?PHP
+	}
+} else if ($all_cat) {
+	include("all_cat.php");
 } else {
-	echo "Cette categorie n'existe pas ou n'existe plus.";
+	echo "<p style=\"text-transform: uppercase;\">Cette categorie est introuvable.</p>";
 }
 include "footer.php";
 ?>
+	</div>
+</div>

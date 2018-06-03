@@ -205,7 +205,8 @@ if ($page == "admin_categories") {
 	// }
 	if (isset($_GET['del_id'])) {
 		$del_id = ceil($_GET['del_id']);
-		$articles = mysqli_query($sql, "SELECT * FROM articles WHERE id_category = ".$del_id);
+		if (!$articles = mysqli_query($sql, "SELECT * FROM articles WHERE gamme = ".$del_id))
+			$articles = mysqli_query($sql, "SELECT * FROM articles WHERE type = ".$del_id);
 		if (mysqli_num_rows($articles) > 0) {
 			$msg = "Il y a encore des articles dans cette categorie, vous ne pouvez donc pas la supprimer";
 		} else {

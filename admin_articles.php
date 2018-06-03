@@ -9,7 +9,8 @@ if (isset($msg)) {
 ?>
 <table>
 <?PHP
-$articles = mysqli_query($sql, "SELECT * FROM articles WHERE id_category = ".$id_categorie." ORDER BY id");
+if (!$articles = mysqli_query($sql, "SELECT * FROM articles WHERE gamme = ".$id_categorie." ORDER BY id"))
+	$articles = mysqli_query($sql, "SELECT * FROM articles WHERE type = ".$id_categorie." ORDER BY id");
 while ($data = mysqli_fetch_array($articles)) {
 	?>
 	<tr>
