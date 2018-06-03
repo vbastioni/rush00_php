@@ -29,7 +29,7 @@
 				</tr>
 						<?php
 						}
-						echo "</table><br /><a id='sendCommand' href='valider.php'>Valider mes achats</a>";
+						echo "</table><br /><a href='valider.php'>Valider mes achats</a>";
 					}
 					?>
 				</td>

@@ -23,12 +23,6 @@ mysqli_query($sql, "CREATE TABLE panier
     id_user int(6) NOT NULL,
     content text NOT NULL,
     finished int(6) NOT NULL,
-    pdt_id int(11) NOT NULL,
-    pdt_qty int(11) NOT NULL,
-    pdt_cost int(11) NOT NULL,
-    usr_id int(11) NOT NULL,
-    cart_cost int(11) NOT NULL,
-    paid bit NOT NULL,
     PRIMARY KEY (id)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1");
 
@@ -75,8 +69,8 @@ mysqli_query($sql, "INSERT INTO articles VALUES (NULL, 1, 'Rasta', 'http://www.b
 
 /*  INSERT USERS    */
 
-mysqli_query($sql, "INSERT INTO users VALUES (NULL, 'clucas@student.42.fr', 'motdepasse', 1, 0)");
-mysqli_query($sql, "INSERT INTO users VALUES (NULL, 'vbastion@student.42.fr', 'motdepasse', 1, 0)");
+mysqli_query($sql, "INSERT INTO users VALUES (NULL, 'clucas@student.42.fr', '06948D93CD1E0855EA37E75AD516A250D2D0772890B073808D831C438509190162C0D890B17001361820CFFC30D50F010C387E9DF943065AA8F4E92E63FF060C', 1, 0)");
+mysqli_query($sql, "INSERT INTO users VALUES (NULL, 'vbastion@student.42.fr', '06948D93CD1E0855EA37E75AD516A250D2D0772890B073808D831C438509190162C0D890B17001361820CFFC30D50F010C387E9DF943065AA8F4E92E63FF060C', 1, 0)");
 
 echo "database ok";
 

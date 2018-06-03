@@ -3,7 +3,7 @@ include "header.php";
 ?>
 <h1>Commande #<?php echo $id_commande; ?> (<a href='admin_orders.php'>Retour</a>)</h1><br />
 <?PHP
-echo "<table id='panier'>";
+echo "<table>";
 $total = 0;
 foreach($content as $id_article => $nb_article) {
 	$retour = mysqli_query($sql, "SELECT * FROM articles WHERE id = ".$id_article." LIMIT 1");
