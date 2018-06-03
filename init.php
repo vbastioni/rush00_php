@@ -23,7 +23,7 @@ if (ft_logged()) {
 	}
 	$user_id = ceil($user['id']);
 }
-if ($page == "index") {
+if ($page == "cart") {
 	if (isset($_GET['add'])) {
 		$id_add = ceil($_GET['add']);
 		if (!isset($_SESSION['panier'])) {
@@ -47,8 +47,14 @@ if ($page == "index") {
 	}
 }
 
-if ($page == "inscription") {
+if ($page == "connexion") {
 	if (ft_logged()) {
+		if (isset($_GET['deconnexion'])) {
+			unset($_SESSION['id']);
+		} else if (isset($_GET['desactivation'])) {
+			mysqli_query($sql, "UPDATE users SET desactivated = 1 WHERE id = ".$_SESSION['id']);
+			unset($_SESSION['id']);
+		}
 		header("Location: index.php");
 		exit;
 	}
@@ -60,7 +66,7 @@ if ($page == "inscription") {
 			$msg = "Veuillez indiquer votre email";
 		} else if (strlen($email) > 100) {
 			$msg = "Votre email est trop long";
-		} else if (!preg_match('#^[\w.-]+@[\w.-]+\.[a-z]{2,10}$#i', $email)) {
+		} else if (!preg_match('#^[\w.-]+@[\w.-]+\.[a-z]{2,3}$#i', $email)) { // A verifier et/ou changer
 			$msg = "Votre email est incorrect";
 		} else if (mysqli_num_rows(mysqli_query($sql, "SELECT email FROM users WHERE email = '".$email."' LIMIT 1")) > 0) {
 			$msg = "Cet email est deja utilise";
@@ -75,19 +81,6 @@ if ($page == "inscription") {
 			header("Location: connexion.php");
 			exit;
 		}
-	}
-}
-
-if ($page == "connexion") {
-	if (ft_logged()) {
-		if (isset($_GET['deconnexion'])) {
-			unset($_SESSION['id']);
-		} else if (isset($_GET['desactivation'])) {
-			mysqli_query($sql, "UPDATE users SET desactivated = 1 WHERE id = ".$_SESSION['id']);
-			unset($_SESSION['id']);
-		}
-		header("Location: index.php");
-		exit;
 	}
 	if (isset($_POST['connexion'])) {
 		$email = $_POST['email'];
@@ -126,12 +119,12 @@ if ($page == "category") {
 
 if ($page == "valider") {
 	if (isset($_POST['valider'])) {
-			mysqli_query($sql, "INSERT INTO panier VALUES (NULL, ".$user_id.", '".serialize($_SESSION['panier'])."', 0)");
-			unset($_SESSION['panier']);
-			header("Location: index.php");
-			exit;
-		}
+		mysqli_query($sql, "INSERT INTO panier VALUES (NULL, ".$user_id.", '".serialize($_SESSION['panier'])."', 0)");
+		unset($_SESSION['panier']);
+		header("Location: index.php");
+		exit;
 	}
+}
 
 if ($page == "admin") {
 	if (!ft_admin()) {
@@ -201,7 +194,8 @@ if ($page == "admin_categories") {
 	}
 	if (isset($_GET['del_id'])) {
 		$del_id = ceil($_GET['del_id']);
-		$articles = mysqli_query($sql, "SELECT * FROM articles WHERE id_category = ".$del_id);
+		if (!$articles = mysqli_query($sql, "SELECT * FROM articles WHERE gamme = ".$del_id))
+			$articles = mysqli_query($sql, "SELECT * FROM articles WHERE type = ".$del_id);
 		if (mysqli_num_rows($articles) > 0) {
 			$msg = "Il y a encore des articles dans cette categorie, vous ne pouvez donc pas la supprimer";
 		} else {
@@ -210,7 +204,7 @@ if ($page == "admin_categories") {
 	}
 	if (isset($_POST['modif'])) {
 		$modif_id = ceil(@$_POST['id']);
-		$name = $_POST['name'];
+		$name = @$_POST['name'];
 		if ($name == "") {
 			$msg = "Le nom de la categorie est vide";
 		} else {
@@ -218,7 +212,7 @@ if ($page == "admin_categories") {
 		}
 	}
 	if (isset($_POST['add'])) {
-		$name = $_POST['name'];
+		$name = @$_POST['name'];
 		if ($name == "") {
 			$msg = "Le nom de la categorie est vide";
 		} else {
@@ -228,8 +222,8 @@ if ($page == "admin_categories") {
 	}
 	if (isset($_POST['add2'])) {
 		$categorie = ceil(@$_POST['categorie']);
-		$name = $_POST['name'];
-		$photo = $_POST['photo'];
+		$name = @$_POST['name'];
+		$photo = @$_POST['photo'];
 		$price = ceil(@$_POST['price']);
 		if (mysqli_num_rows(mysqli_query($sql, "SELECT id FROM categories WHERE id = ".$categorie)) == 0) {
 			$msg = "Cette categorie n'existe pas";

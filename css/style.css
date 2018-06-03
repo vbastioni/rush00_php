@@ -5,10 +5,37 @@ body {
 .container {
     background-color: rgb(250, 241, 241);
     margin: 0 auto;
-    width: 1200px;
-    height: 100%;
-    padding-top: 54px;
-    padding-bottom: 30px;
+    width: 100%;
+    max-width: 1000px;
+    height: 100vh;
+    padding-top: 120px;
+    padding-bottom: 40px;
+}
+
+.cat-container {
+    background-color: rgb(250, 241, 241);
+    margin: 0 auto;
+    width: 100%;
+    max-width: 1000px;
+    height: 100vh;
+    padding: 120px 30px 40px 30px;
+}
+
+.left-part {
+    width: 350px;
+    height: 115px;
+    /* padding: ; */
+    padding-top: 15%;
+    padding-left: 12%;
+    float:left;
+}
+
+.right-part {
+    width: 350px;
+    height: 115px;
+    padding-top: 15%;
+    padding-left: 12%;
+    float:left;
 }
 
 footer {
@@ -16,8 +43,10 @@ footer {
     left: 0;
     bottom: 0;
     width: 100%;
-    background-color: #424558;
+    background-color: #00291b;
     color: white;
     text-align: right;
-    height: 30px;
+    height: 22px;
+    padding-top: 8px;
 }
+
