@@ -77,7 +77,8 @@ nav li:hover .submenu {
 }
 
 .cat .submenu li:hover {
-    border: 1px solid #E44D26;
+    border: 1px solid #49796b;
+    background-color: rgba(73,121,107, 0.15);
 }
 
 nav > ul > li:hover a {

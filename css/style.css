@@ -12,6 +12,15 @@ body {
     padding-bottom: 40px;
 }
 
+.cat-container {
+    background-color: rgb(250, 241, 241);
+    margin: 0 auto;
+    width: 100%;
+    max-width: 1000px;
+    height: 100vh;
+    padding: 120px 30px 40px 30px;
+}
+
 .left-part {
     width: 350px;
     height: 115px;
