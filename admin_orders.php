@@ -9,7 +9,7 @@ if (isset($msg)) {
 ?>
 <table>
 <?PHP
-$orders = mysqli_query($sql, "SELECT shop.id, shop.finished, users.email FROM shop LEFT JOIN users ON users.id = shop.id_user ORDER BY shop.finished, shop.id");
+$orders = mysqli_query($sql, "SELECT panier.id, panier.finished, users.email FROM panier LEFT JOIN users ON users.id = panier.id_user ORDER BY panier.finished, panier.id");
 while ($data = mysqli_fetch_array($orders)) {
 	?>
 	<tr>

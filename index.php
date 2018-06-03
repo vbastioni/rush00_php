@@ -1,9 +1,10 @@
 <?php
-include "header.php"; ?>
+include "header.php";
+?>
 <div class="cat-container">
 	<div class="card-columns">
 <?php
-include "all_cat.php";
+include("all_cat.php");
 ?>
 	</div>
 </div>

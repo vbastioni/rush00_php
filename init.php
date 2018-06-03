@@ -125,15 +125,11 @@ if ($page == "category") {
 }
 
 if ($page == "valider") {
-	if (isset($_POST['valider']) && isset($_SESSION['nb1']) && isset($_SESSION['nb2'])) {
-			mysqli_query($sql, "INSERT INTO panier VALUES (NULL, ".$user_id.", '".serialize($_SESSION['panier'])."', 0)");
-			unset($_SESSION['panier']);
-			header("Location: index.php");
-			exit;
-		}
-	 else {
-		$_SESSION['nb1'] = rand(1, 10);
-		$_SESSION['nb2'] = rand(1, 10);
+	if (isset($_POST['valider'])) {
+		mysqli_query($sql, "INSERT INTO panier VALUES (NULL, ".$user_id.", '".serialize($_SESSION['panier'])."', 0)");
+		unset($_SESSION['panier']);
+		header("Location: index.php");
+		exit;
 	}
 }
 
@@ -215,7 +211,7 @@ if ($page == "admin_categories") {
 	}
 	if (isset($_POST['modif'])) {
 		$modif_id = ceil(@$_POST['id']);
-		$name = ft_secure(@$_POST['name']);
+		$name = @$_POST['name'];
 		if ($name == "") {
 			$msg = "Le nom de la categorie est vide";
 		} else {
@@ -223,7 +219,7 @@ if ($page == "admin_categories") {
 		}
 	}
 	if (isset($_POST['add'])) {
-		$name = ft_secure(@$_POST['name']);
+		$name = @$_POST['name'];
 		if ($name == "") {
 			$msg = "Le nom de la categorie est vide";
 		} else {
@@ -233,8 +229,8 @@ if ($page == "admin_categories") {
 	}
 	if (isset($_POST['add2'])) {
 		$categorie = ceil(@$_POST['categorie']);
-		$name = ft_secure(@$_POST['name']);
-		$photo = ft_secure(@$_POST['photo']);
+		$name = @$_POST['name'];
+		$photo = @$_POST['photo'];
 		$price = ceil(@$_POST['price']);
 		if (mysqli_num_rows(mysqli_query($sql, "SELECT id FROM categories WHERE id = ".$categorie)) == 0) {
 			$msg = "Cette categorie n'existe pas";
@@ -258,12 +254,12 @@ if ($page == "admin_orders") {
 	// }
 	if (isset($_GET['valid_id'])) {
 		$valid_id = ceil($_GET['valid_id']);
-		mysqli_query($sql, "UPDATE shop SET finished = finished + 1 WHERE id = ".$valid_id);
-		mysqli_query($sql, "UPDATE shop SET finished = 0 WHERE finished > 1");
+		mysqli_query($sql, "UPDATE panier SET finished = finished + 1 WHERE id = ".$valid_id);
+		mysqli_query($sql, "UPDATE panier SET finished = 0 WHERE finished > 1");
 	}
 	if (isset($_GET['del_id'])) {
 		$del_id = ceil($_GET['del_id']);
-		mysqli_query($sql, "DELETE FROM shop WHERE id = ".$del_id);
+		mysqli_query($sql, "DELETE FROM panier WHERE id = ".$del_id);
 	}
 }
 
