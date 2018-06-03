@@ -1,66 +1,34 @@
 <?php
-$logged = true;
-?>
+include "header.php";
+$prev = false;
+$categories = mysqli_query($sql, "SELECT id, name FROM categories ORDER BY name LIMIT 2");
 
-<html>
-<head>
-    <title>ft_minishop</title>
-    <link rel="stylesheet" href="/RUSH00/css/style.css">
-    <link rel="stylesheet" href="/RUSH00/css/header.css">
-</head>
-<body>
-    <header>
-        <nav id="left-nav">
-            <ul>
-                <li class="cat_a"><a>SANDWICHS</a>
-                    <ul class="submenu">
-                        <li><a>Club Poulet C&eacute;sar</a></li>
-                        <li><a>Pain aux c&eacute;r&eacute;ales jambon crudit&eacute;s</a></li>
-                        <li><a>Wrap bacon laitue tomate</a></li>
-                        <li><a>Navette fromage frais</a></li>
-                        <li><a>Navette jambon beurre</a></li>
-                    </ul>
-                </li>
-                <li class="cat_b"><a>SOUPES &amp; SALADES</a>
-                    <ul class="submenu">
-                        <li><a>Soupe carotte coriandre BIO</a></li>
-                        <li><a>Salade chou asiatique</a></li>
-                        <li><a>Salade de lentilles saumon sauce gravlax</a></li>
-                    </ul>
-                </li>
-                <li class="cat_b"><a>CHAUD</a>
-                    <ul class="submenu">
-                        <li><a>Croque-monsieur</a></li>
-                        <li><a>Quiche saumon fum&eacute; &eacute;pinards</a></li>
-                        <li><a>Risotto aux champignons et poulet</a></li>
-                        <li><a>Raviolinnis aux trois fromages</a></li>
-                        <li><a>Plat cuisin&eacute; de chef bobo BIO</a></li>
-                    </ul>
-                </li>
-            </ul>
-        </nav>
-        <nav id="right-nav">
-            <ul>
-<?php
-if ($logged === false) 
-    echo "<li><a class=\"cat_d\">LOGIN / REGISTER</a></li>\n";
-else
-    echo "<li class=\"cat_d\">
-<a>Account</a>
-<ul class=\"submenu\">
-<li><a>Profile</a></li>
-<li><a>SIGN OUT</a></li>
-</ul>
-</li>\n";
+
+// echo "<table cellspacing=\"0\">\n<tr>";
+
+while ($category = mysqli_fetch_row($categories)) {
+	if ($prev) {
+		echo "<br />";
+	} else {
+		$prev = true;
+	}
+	echo "<h1>".$category['name']."</h1><br /><table id='articles'>";
+	$articles = mysqli_query($sql, "SELECT * FROM articles WHERE id_category = ".$category['id']." ORDER BY RAND() LIMIT 2");
+    if ($articles)
+    {
+    while ($article = mysqli_fetch_row($articles)) {
 ?>
-            </ul>
-        </nav>
-    </header>
-    <div class="container">
-        <div style="width: 900px; text-align: center; background-color: gray; height: 500px; margin-botton: 30px; margin: 0 auto;"></div>
-    </div>
-    <footer>
-        &copy; clucas - vbastion 2018
-    </footer>
-</body>
-</html>
+		<tr>
+			<td><img alt='<?php echo $article['name']; ?>' src='<?php echo $article['photo']; ?>' title='<?php echo $article['name']; ?>' /></td>
+			<td><?php echo $article['name']; ?></td>
+			<td><?php echo $article['price']; ?>&euro;</td>
+			<td><a href='index.php?add=<?php echo $article['id']; ?>'>Ajouter au panier</a></td>
+		</tr>
+		<?php
+    }
+}
+	echo "</table>";
+}
+
+include "footer.php"
+?> 
