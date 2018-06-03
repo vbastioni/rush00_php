@@ -7,7 +7,7 @@ while ($article = mysqli_fetch_array($articles)) { ?>
             <div class="card-body">
                 <h5 class="card-title"><?= $article['name'] ?></h5>
                 <p class="card-text"><?= $article['price'] ?>&euro;</p>
-                <a href="index.php?add=<?php echo $article['id']; ?>">+</a>
+                <a href="cart.php?add=<?php echo $article['id']; ?>">+</a>
             </div>
         </div>
 <?php } ?>

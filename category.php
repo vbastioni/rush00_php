@@ -29,6 +29,7 @@ if ($ok) {
             <div class="card-body">
                 <h5 class="card-title"><?= $article['name'] ?></h5>
                 <p class="card-text"><?= $article['price'] ?>&euro;</p>
+                <a href="cart.php?add=<?php echo $article['id']; ?>">+</a>
             </div>
         </div>
 		<?PHP
@@ -41,6 +42,7 @@ if ($ok) {
             <div class="card-body">
                 <h5 class="card-title"><?= $article['name'] ?></h5>
                 <p class="card-text"><?= $article['price'] ?>&euro;</p>
+                <a href="cart.php?add=<?php echo $article['id']; ?>">+</a>
             </div>
         </div>
 		<?PHP

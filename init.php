@@ -23,7 +23,7 @@ if (ft_logged()) {
 	}
 	$user_id = ceil($user['id']);
 }
-if ($page == "index") {
+if ($page == "cart") {
 	if (isset($_GET['add'])) {
 		$id_add = ceil($_GET['add']);
 		if (!isset($_SESSION['panier'])) {
