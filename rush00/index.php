@@ -2,6 +2,10 @@
 include "header.php";
 $prev = false;
 $categories = mysqli_query($sql, "SELECT id, name FROM categories ORDER BY name LIMIT 2");
+
+
+// echo "<table cellspacing=\"0\">\n<tr>";
+
 while ($category = mysqli_fetch_row($categories)) {
 	if ($prev) {
 		echo "<br />";
