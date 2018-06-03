@@ -1,6 +1,7 @@
 <?PHP
 include "header.php";
 ?>
+<div class="cat-container">
 <h1>Valider votre commande</h1><br />
 <?PHP
 if (ft_logged()) {
@@ -18,6 +19,8 @@ if (ft_logged()) {
 	}
 } else {
 	echo "Vous devez vous connecter pour valider votre commande";
-}
+}?>
+</div>
+<?php
 include "footer.php";
 ?>

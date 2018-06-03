@@ -1,6 +1,7 @@
 <?PHP
 include "header.php";
 ?>
+<div class="cat-container">
 <h1>Gestion des categories (<a href='admin.php'>Retour</a>)</h1><br />
 <?PHP
 if (isset($msg)) {
@@ -34,7 +35,11 @@ while ($data = mysqli_fetch_array($categories)) {
 	<table>
 		<tr>
 			<td>Nom de la categorie:</td>
-			<td><input type="text" name="name" /><input type="submit" name="add" value="OK" /></td>
+			<td>
+				<input type="text" name="name" />
+				est une gamme: <input type="checkbox" name="is_gamme" value="true"/>
+				<input type="submit" name="add" value="OK" />
+			</td>
 		</tr>
 	</table>
 </form>
@@ -43,10 +48,21 @@ while ($data = mysqli_fetch_array($categories)) {
 <form method="post" action="admin_categories.php">
 	<table>
 		<tr>
-			<td>Categorie:</td>
+			<td>Type:</td>
 			<td>
-				<select name="categorie"><?php
-				$categories = mysqli_query($sql, "SELECT * FROM categories ORDER BY name");
+				<select name="cat_type"><?php
+				$categories = mysqli_query($sql, "SELECT * FROM categories WHERE cat_type = '0' ORDER BY name");
+				while ($data = mysqli_fetch_array($categories)) {
+					echo "<option value='".$data['id']."'>".$data['name']."</option>";
+				}
+				?></select>
+			</td>
+		</tr>
+		<tr>
+			<td>Gamme:</td>
+			<td>
+				<select name="cat_gamme"><?php
+				$categories = mysqli_query($sql, "SELECT * FROM categories WHERE cat_type = '1' ORDER BY name");
 				while ($data = mysqli_fetch_array($categories)) {
 					echo "<option value='".$data['id']."'>".$data['name']."</option>";
 				}
@@ -68,6 +84,7 @@ while ($data = mysqli_fetch_array($categories)) {
 	</table>
 	<input class="center" type="submit" name="add2" value="Ajouter un article" />
 </form>
+</div>
 <?PHP
 include "footer.php";
 ?>

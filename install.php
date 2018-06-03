@@ -78,11 +78,24 @@ mysqli_query($sql, "INSERT INTO categories (name, cat_type)
                             ('Sans Gamme', 1)");
 
 /*  INSERT ARTICLES */
-
-mysqli_query($sql, "INSERT INTO articles (name, gamme, type, photo, price) VALUES ('Crayon Polychromos coffret bois de 120 pieces', 13, 2, '/RUSH00/img/110013_10_PM1.jpg', 350)");
-// mysqli_query($sql, "INSERT INTO articles VALUES (NULL, 1, 'Woodstock', 'https://media.cdnws.com/_i/25864/2304/1160/7/skateboard-skate-penny-nickel-complete-27-tie-dye-die-multicolore-flashy-pouces-pas-cher-woodstock.png', 152)");
-// mysqli_query($sql, "INSERT INTO articles VALUES (NULL, 1, 'Rasta', 'http://www.boardridersguide.com/media/catalog/product/cache/1/image/9df78eab33525d08d6e5fb8d27136e95/p/e/penny-skateboard-rasta.jpg', 140)");
-
+$root = dirname($_SERVER['PHP_SELF']);
+mysqli_query($sql, "INSERT INTO articles (name, gamme, type, photo, price) VALUES ('Crayon Polychromos coffret bois de 120 pieces', 13, 2, '$root/img/110013_10_PM1.jpg', 350)");
+mysqli_query($sql, "INSERT INTO articles (name, gamme, type, photo, price) VALUES ('Crayon Polychromos boîte métal de 24 pièces', 13, 2, '$root/img/110024_10_PM1.jpg', 43)");
+mysqli_query($sql, "INSERT INTO articles (name, gamme, type, photo, price) VALUES ('Crayon Polychromos boîte métal de 36 pièces', 13, 2, '$root/img/110036_10_PM1.jpg', 65)");
+mysqli_query($sql, "INSERT INTO articles (name, gamme, type, photo, price) VALUES ('Crayon Polychromos studio box de 36 pièces', 13, 2, '$root/img/110038_10_PM1.jpg', 70)");
+mysqli_query($sql, "INSERT INTO articles (name, gamme, type, photo, price) VALUES ('Crayon Polychromos boîte métal de 60 pièces', 13, 2, '$root/img/110060_10_PM1.jpg', 115)");
+mysqli_query($sql, "INSERT INTO articles (name, gamme, type, photo, price) VALUES ('Crayon Polychromos boîte métal de 12 pièces', 13, 2, '$root/img/110012_10_PM3.jpg', 22)");
+mysqli_query($sql, "INSERT INTO articles (name, gamme, type, photo, price) VALUES ('Crayon Polychromos boîte métal de 120 pièces', 13, 2, '$root/img/110011_10_PM1.jpg', 225)");
+mysqli_query($sql, "INSERT INTO articles (name, gamme, type, photo, price) VALUES ('Crayon Polychromos coffret bois de 72 pièces', 13, 2, '$root/img/110072_10_PM1.jpg', 290)");
+mysqli_query($sql, "INSERT INTO articles (name, gamme, type, photo, price) VALUES ('Pot x 68 crayons Polychromos', 13, 2, '$root/img/210050_10_PM1.jpg', 130)");
+mysqli_query($sql, "INSERT INTO articles (name, gamme, type, photo, price) VALUES ('Crayons A. Dürer Magnus boîte de métal de 24', 10, 2, '$root/img/116924_10_PM3.jpg', 70)");
+mysqli_query($sql, "INSERT INTO articles (name, gamme, type, photo, price) VALUES ('Crayons A. Dürer Magnus boîte de métal de 12', 10, 2, '$root/img/116912_10_PM3.jpg', 35)");
+mysqli_query($sql, "INSERT INTO articles (name, gamme, type, photo, price) VALUES ('Coffret bois A. Dürer Magnus x30+acc.', 10, 2, '$root/img/116900_10_PM1.jpg', 135)");
+mysqli_query($sql, "INSERT INTO articles (name, gamme, type, photo, price) VALUES ('Crayon Pitt Pastel boîte métal de 12 pièces', 11, 2, '$root/img/112112_10_PM3.jpg', 21)");
+mysqli_query($sql, "INSERT INTO articles (name, gamme, type, photo, price) VALUES ('Crayon Pitt Pastel boîte métal de 24 pièces', 11, 2, '$root/img/112124_10_PM1.jpg', 43)");
+mysqli_query($sql, "INSERT INTO articles (name, gamme, type, photo, price) VALUES ('Crayon Pitt Pastel boîte métal de 36 pièces', 11, 2, '$root/img/112136_10_PM1.jpg', 63)");
+mysqli_query($sql, "INSERT INTO articles (name, gamme, type, photo, price) VALUES ('Crayon Pitt Pastel boîte métal de 60 pièces', 11, 2, '$root/img/112160_10_PM1.jpg', 102)");
+mysqli_query($sql, "INSERT INTO articles (name, gamme, type, photo, price) VALUES ('Blister de 3 crayons Pitt Pastel', 11, 2, '$root/img/112797_10_PM1.jpg', 6)");
 /*  INSERT USERS    */
 
 mysqli_query($sql, "INSERT INTO users VALUES (NULL, 'clucas@student.42.fr', '06948D93CD1E0855EA37E75AD516A250D2D0772890B073808D831C438509190162C0D890B17001361820CFFC30D50F010C387E9DF943065AA8F4E92E63FF060C', 1, 0)");

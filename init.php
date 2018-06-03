@@ -216,17 +216,23 @@ if ($page == "admin_categories") {
 		if ($name == "") {
 			$msg = "Le nom de la categorie est vide";
 		} else {
+			$cat = ($_POST['is_gamme'] == 'true') ? '1' : '0';
 			$msg = "La categorie '".$name."' a bien ete ajoutee";
-			mysqli_query($sql, "INSERT INTO categories VALUES (NULL, '".$name."')");
+			$query = "INSERT INTO categories (name, cat_type)
+						VALUES ('$name', ".$cat.")";
+			mysqli_query($sql, $query);
 		}
 	}
 	if (isset($_POST['add2'])) {
-		$categorie = ceil(@$_POST['categorie']);
-		$name = @$_POST['name'];
-		$photo = @$_POST['photo'];
+		$type = ceil (@$_POST['cat_type']);
+		$gamme = ceil (@$_POST['cat_gamme']);
+		$name = $_POST['name'];
+		$photo = $_POST['photo'];
 		$price = ceil(@$_POST['price']);
-		if (mysqli_num_rows(mysqli_query($sql, "SELECT id FROM categories WHERE id = ".$categorie)) == 0) {
-			$msg = "Cette categorie n'existe pas";
+		if (mysqli_num_rows(mysqli_query($sql, "SELECT id FROM categories WHERE id = ".$type)) == 0) {
+			$msg = "Ce type n'existe pas";
+		} else if (mysqli_num_rows(mysqli_query($sql, "SELECT id FROM categories WHERE id = ".$gamme)) == 0) {
+			$msg = "Cette gamme n'existe pas";
 		} else if ($name == "") {
 			$msg = "Le nom de l'article est vide";
 		} else if ($photo == "") {
@@ -234,8 +240,9 @@ if ($page == "admin_categories") {
 		} else if ($price < 1) {
 			$msg = "Le prix ne peut pas etre inferieur a 1 euro.";
 		} else {
-			$msg = "L'article '".$name."' a bien ete ajoutee";
-			mysqli_query($sql, "INSERT INTO articles VALUES (NULL, ".$categorie.", '".$name."', '".$photo."', ".$price.")");
+			$query = "INSERT INTO articles (name, gamme, type, photo, price) VALUES ('$name', $gamme, $type, '$photo', $price)";
+			$msg = "L'article '".$name."' a bien ete ajoutee dans $type/$gamme";
+			mysqli_query($sql, $query);
 		}
 	}
 }

@@ -1,13 +1,14 @@
 <?php
 include "init.php";
+$root = dirname($_SERVER['PHP_SELF']);
 ?>
 <!DOCTYPE html>
 <html>
 	<head>
 		<title>ft_minishop</title>
-		<link rel="stylesheet" href="/RUSH00/css/style.css">
-		<link rel="stylesheet" href="/RUSH00/css/header.css">
-		<link rel="stylesheet" href="/RUSH00/css/card.css">
+		<link rel="stylesheet" href="<?=$root?>/css/style.css">
+		<link rel="stylesheet" href="<?=$root?>/css/header.css">
+		<link rel="stylesheet" href="<?=$root?>/css/card.css">
 	</head>
 	<body>
 	<header>

@@ -1,6 +1,7 @@
 <?PHP
 include "header.php";
 ?>
+<div class="cat-container">
 <h1>Gestion des commandes (<a href='admin.php'>Retour</a>)</h1><br />
 <?PHP
 if (isset($msg)) {
@@ -21,7 +22,9 @@ while ($data = mysqli_fetch_array($orders)) {
 		<td><a onclick="return confirm('Voulez-vous vraiment supprimer cette commande? Cette action est irreversible !');" href='admin_orders.php?del_id=<?php echo $data['id']; ?>'>Supprimer</a></td>
 	</tr>
 	<?PHP
-}
-echo "</table>";
+} ?>
+</table>
+</div>
+<?php
 include "footer.php";
 ?>

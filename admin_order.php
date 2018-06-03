@@ -1,7 +1,9 @@
 <?PHP
 include "header.php";
 ?>
+<div class="cat-container">
 <h1>Commande #<?php echo $id_commande; ?> (<a href='admin_orders.php'>Retour</a>)</h1><br />
+<div class="card-columns">
 <?PHP
 echo "<table>";
 $total = 0;
@@ -10,20 +12,22 @@ foreach($content as $id_article => $nb_article) {
 	if (mysqli_num_rows($retour) > 0) {
 		$article = mysqli_fetch_array($retour);
 		?>
-		<tr>
-			<td><img alt='<?PHP echo $article['name']; ?>' src='<?PHP echo $article['photo']; ?>' title='<?PHP echo $article['name']; ?>' /></td>
-			<td><?php echo $article['name']; ?><br />Quantité: <?PHP echo $nb_article; ?></td>
-			<td><?php echo $article['price'] * $nb_article; ?>&euro;</td>
-		</tr>
+		<div class="card" style="width: 18rem;">
+            <img class="card-img-top" src="<?= $article['photo']?>" alt="<?= $article['name']?>" height=18rem>
+            <div class="card-body">
+				<h5 class="card-title"><?= $article['name'] ?></h5>
+				<p>Quantité: <?PHP echo $nb_article; ?></p>
+                <p class="card-text"><?php echo $article['price'] * $nb_article; ?>&euro;</p>
+            </div>
+        </div>
 		<?PHP
 		$total += $article['price'] * $nb_article;
 	}
 }
 ?>
-<tr>
-	<td>Total: </td>
-	<td><?PHP echo $total; ?>&euro;</td>
-</tr></table>
+</div>
+<h3>Total: <?PHP echo $total; ?>&euro;</h3>
+</div>
 <?PHP
 include "footer.php";
 ?>

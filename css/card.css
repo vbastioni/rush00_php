@@ -14,16 +14,16 @@
     word-wrap: break-word;
     background-color: #fff;
     background-clip: border-box;
-    border: 1px solid rgba(0, 0, 0, 0.125);
+    border: 2px solid #49796b;
     border-radius: 0.25rem;
 }
 
 .card-img-top {
-    width: 100%;
     border-top-left-radius: calc(0.25rem - 1px);
     border-top-right-radius: calc(0.25rem - 1px);
-    width: 18rem;
-    height: 18rem;
+    padding: 20px;
+    width: calc(18rem - 40px);
+    height: calc(18rem - 40px);
 }
 
 .card-body {

@@ -1,6 +1,7 @@
 <?PHP
 include "header.php";
 ?>
+<div class="cat-container">
 <h1 class="tch">Gestion des utilisateurs (<a href='admin.php'>Retour</a>)</h1><br />
 <table id='articles'>
 <?PHP
@@ -17,7 +18,9 @@ while ($data = mysqli_fetch_array($users)) {
 		<td><a href='admin_users.php?activ_id=<?php echo $data['id']; ?>'><?php echo ($data['desactivated'] ? "Active" : "Unactive"); ?></a></td>
 	</tr>
 	<?PHP
-}
-echo "</table>";
+} ?>
+</table>
+</div>
+<?php
 include "footer.php";
 ?>
