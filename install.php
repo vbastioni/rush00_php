@@ -45,6 +45,7 @@ mysqli_query($sql, "CREATE TABLE users
 
 mysqli_query($sql, "CREATE TABLE categories (
     id int(11) NOT NULL AUTO_INCREMENT,
+    cat_type bit NOT NULL,
     name text NOT NULL,
     PRIMARY KEY (id)
   ) ENGINE=InnoDB DEFAULT CHARSET=latin1");
@@ -63,10 +64,25 @@ mysqli_query($sql, "CREATE TABLE articles (
 
 /*  INSERT CATEGORIES   */
 
-mysqli_query($sql, "INSERT INTO categories (name) VALUES ('type')");
-mysqli_query($sql, "INSERT INTO categories (name) VALUES ('crayons')");
-mysqli_query($sql, "INSERT INTO categories (name) VALUES ('feutres')");
-mysqli_query($sql, "INSERT INTO categories (name) VALUES ('world')");
+if (!mysqli_query($sql, "SELECT * FROM categories"))
+{
+    mysqli_query($sql, "INSERT INTO categories (name, cat_type) 
+                        VALUES ('Crayons graphite', 0),
+                                ('Crayons de couleur', 0),
+                                ('Feutres', 0),
+                                ('Sets', 0),
+                                ('Craie', 0),
+                                ('Fusains', 0),
+                                ('Gommes', 0),
+                                ('Equipement', 0),
+                                ('Albrecht D&uuml;rer', 1),
+                                ('Albrecht D&uuml;rer Magnus', 1),
+                                ('Pastel PITT', 1),
+                                ('Pitt Monochrome', 1),
+                                ('Polychromos', 1),
+                                ('Castell 9000', 1),
+                                ('Pitt Artist Pens', 1)");
+}
 
 /*  INSERT ARTICLES */
 
@@ -75,8 +91,8 @@ mysqli_query($sql, "INSERT INTO articles VALUES (NULL, 1, 'Rasta', 'http://www.b
 
 /*  INSERT USERS    */
 
-mysqli_query($sql, "INSERT INTO users VALUES (NULL, 'clucas@student.42.fr', 'motdepasse', 1, 0)");
-mysqli_query($sql, "INSERT INTO users VALUES (NULL, 'vbastion@student.42.fr', 'motdepasse', 1, 0)");
+mysqli_query($sql, "INSERT INTO users VALUES (NULL, 'clucas@student.42.fr', '06948D93CD1E0855EA37E75AD516A250D2D0772890B073808D831C438509190162C0D890B17001361820CFFC30D50F010C387E9DF943065AA8F4E92E63FF060C', 1, 0)");
+mysqli_query($sql, "INSERT INTO users VALUES (NULL, 'vbastion@student.42.fr', '06948D93CD1E0855EA37E75AD516A250D2D0772890B073808D831C438509190162C0D890B17001361820CFFC30D50F010C387E9DF943065AA8F4E92E63FF060C', 1, 0)");
 
 echo "database ok";
 

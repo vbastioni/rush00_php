@@ -15,7 +15,14 @@
 			?>
 			<tr>
 				<td><img alt='<?php echo $article['name']; ?>' src='<?php echo $article['photo']; ?>' title='<?php echo $article['name']; ?>' /></td>
-				<td><?php echo $article['name']; ?><br />Quantité: <?php echo $nb_article; ?><br /><a href="index.php?remove=<?php echo $id_article; ?>">Moins</a> - <a href="index.php?add=<?php echo $id_article; ?>">Plus</a></td>
+				<td>
+					<?php echo $article['name']; ?>
+					<br />
+					Quantité: <?php echo $nb_article; ?>
+					<br />
+					<a href="index.php?remove=<?php echo $id_article; ?>">Moins</a> - 
+					<a href="index.php?add=<?php echo $id_article; ?>">Plus</a>
+				</td>
 				<td><?php echo $article['price'] * $nb_article; ?>&euro;</td>
 			</tr>
 			<?php
@@ -30,7 +37,7 @@
 			</tr>
 			<?php
 			}
-			echo "</table><br /><a id='sendCommand' href='valider.php'>Valider mes achats</a>";
+			echo "</table><br /><a href='valider.php'>Valider mes achats</a>";
 			}
 			?>
         </td>
