@@ -23,12 +23,6 @@ mysqli_query($sql, "CREATE TABLE panier
     id_user int(6) NOT NULL,
     content text NOT NULL,
     finished int(6) NOT NULL,
-    pdt_id int(11) NOT NULL,
-    pdt_qty int(11) NOT NULL,
-    pdt_cost int(11) NOT NULL,
-    usr_id int(11) NOT NULL,
-    cart_cost int(11) NOT NULL,
-    paid bit NOT NULL,
     PRIMARY KEY (id)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1");
 

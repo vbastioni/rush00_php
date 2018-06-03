@@ -50,10 +50,10 @@ include "init.php";
 				<li class="cat">
 				<a>ACCOUNT (<?= $user['email'] ?>)</a>
 					<ul class="submenu">
-						<li><a href="">Profile</a></li>
 						<?php if (ft_admin()) { ?>
 						<li><a href="admin.php">ADMIN_PANEL</a></li>
 						<?php } ?> 
+						<li><a onclick="return confirm('Voulez-vous vraiment desactiver votre compte? Cette action est irreversible !');" href="connexion.php?desactivation=1">Desactiver ce compte</a></li>
 						<li><a href="connexion.php?deconnexion=1">SIGN OUT</a></li>
 					</ul>
 				</li>
