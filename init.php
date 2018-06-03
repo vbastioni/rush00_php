@@ -59,9 +59,9 @@ if ($page == "connexion") {
 		exit;
 	}
 	if (isset($_POST['inscription'])) {
-		$email = $_POST['email'];
-		$mdp = $_POST['mdp'];
-		$mdp_verif = $_POST['mdp_verif'];
+		$email = ft_secure(@$_POST['email']);
+		$mdp = ft_secure(@$_POST['mdp']);
+		$mdp_verif = ft_secure(@$_POST['mdp_verif']);
 		if ($email == "") {
 			$msg = "Veuillez indiquer votre email";
 		} else if (strlen($email) > 100) {
@@ -83,8 +83,8 @@ if ($page == "connexion") {
 		}
 	}
 	if (isset($_POST['connexion'])) {
-		$email = $_POST['email'];
-		$mdp = $_POST['mdp'];
+		$email = ft_secure(@$_POST['email']);
+		$mdp = ft_secure(@$_POST['mdp']);
 		if ($email == "") {
 			$msg = "Veuillez indiquer votre email";
 		} else if ($mdp == "") {
@@ -172,8 +172,8 @@ if ($page == "admin_articles") {
 	}
 	if (isset($_POST['modif'])) {
 		$modif_id = ceil(@$_POST['id']);
-		$name = $_POST['name'];
-		$photo = $_POST['photo'];
+		$name = ft_secure(@$_POST['name']);
+		$photo = ft_secure(@$_POST['photo']);
 		$price = ceil(@$_POST['price']);
 		if ($name == "") {
 			$msg = "Le nom de l'article est vide";
@@ -204,7 +204,7 @@ if ($page == "admin_categories") {
 	}
 	if (isset($_POST['modif'])) {
 		$modif_id = ceil(@$_POST['id']);
-		$name = @$_POST['name'];
+		$name = ft_secure(@$_POST['name']);
 		if ($name == "") {
 			$msg = "Le nom de la categorie est vide";
 		} else {
@@ -212,7 +212,7 @@ if ($page == "admin_categories") {
 		}
 	}
 	if (isset($_POST['add'])) {
-		$name = @$_POST['name'];
+		$name = ft_secure(@$_POST['name']);
 		if ($name == "") {
 			$msg = "Le nom de la categorie est vide";
 		} else {
@@ -226,8 +226,8 @@ if ($page == "admin_categories") {
 	if (isset($_POST['add2'])) {
 		$type = ceil (@$_POST['cat_type']);
 		$gamme = ceil (@$_POST['cat_gamme']);
-		$name = $_POST['name'];
-		$photo = $_POST['photo'];
+		$name = ft_secure(@$_POST['name']);
+		$photo = ft_secure(@$_POST['photo']);
 		$price = ceil(@$_POST['price']);
 		if (mysqli_num_rows(mysqli_query($sql, "SELECT id FROM categories WHERE id = ".$type)) == 0) {
 			$msg = "Ce type n'existe pas";

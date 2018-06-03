@@ -12,4 +12,9 @@ function ft_admin() {
 function crypt_mdp($mdp) {
 	return hash("whirlpool", $mdp);
 }
+
+function ft_secure($str) {
+	return str_replace('\\', '/', htmlentities(htmlspecialchars(trim($str)), ENT_QUOTES));
+}
+
 ?>
